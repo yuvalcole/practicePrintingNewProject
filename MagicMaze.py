@@ -4,7 +4,7 @@ lifes = 3
 direction = ""
 correctCombination = "SSNWES"
 a=0;
-while flag:
+while a<len(correctCombination):
     prompt = "Which way do you want to go? (N, S , W, E )"
     election = input(prompt)
     if election != "N" and election!= "S" and election!= "W" and election!= "E": #idk if and operator or OR operator
@@ -13,12 +13,16 @@ while flag:
         moves += 1
 
     elif election == "N" or election == "S" or election =="W" or election == "E":
-
-        if(election==correctCombination[a]):
+        if election==correctCombination[a]:
             direction = direction + election
             print("Good choice, you are now one step closer!")
             moves +=1
             a+=1
+            if direction == (correctCombination):
+                print("GG")
+                print("You did it in", moves, "moves.")
+                print("You had", lifes, "lifes left.")
+                break
 
         else:
             print("Try again")
@@ -27,15 +31,13 @@ while flag:
 
     if moves%10==0:
         lifes -= 1
+        print("You lost a life")
         if lifes ==0:
-            ("Game Over, you lost all your lifes")
-            flag = False
+            print("Game Over, you lost all your lifes")
+            break
 
 
-    if election == correctCombination:
-        print ("GG")
-        print("You did it in", moves, "moves.")
-        print("You had", lifes, "lifes left.")
+
 
 
 
